@@ -1,0 +1,71 @@
+/* Design Tokens - Auto-generated */
+/* Do not edit directly - modify design/tokens.json instead */
+
+/* === PRIMITIVES === */
+:root {
+  --primitive-color-ink-700: #3C2F3F;
+  --primitive-color-ink-800: #2A2130;
+  --primitive-color-ink-900: #1C1620;
+  --primitive-color-ink-950: #140F17;
+  --primitive-color-bone-100: #F8F1E9;
+  --primitive-color-bone-300: #E7D8C4;
+  --primitive-color-bone-500: #A8998E;
+  --primitive-color-coral-500: #FF6F5E;
+  --primitive-color-coral-700: #C24B3D;
+  --primitive-color-coral-900: #5C2018;
+  --primitive-color-teal-500: #3FBFA8;
+  --primitive-color-teal-700: #257F6E;
+  --primitive-color-teal-900: #123A32;
+  --primitive-font-display: var(--font-bricolage), 'Bricolage Grotesque', system-ui, sans-serif;
+  --primitive-font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
+  --primitive-motion-duration-micro: 180ms;
+  --primitive-motion-duration-base: 320ms;
+  --primitive-motion-duration-reveal: 1.1s;
+  --primitive-motion-duration-cine: 1.8s;
+  --primitive-motion-ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --primitive-motion-ease-cine: cubic-bezier(0.65, 0, 0.35, 1);
+  --primitive-tracking-display: -0.015em;
+  --primitive-tracking-label: 0.26em;
+}
+
+/* === SEMANTIC === */
+:root {
+  --background: #140F17;
+  --foreground: #F8F1E9;
+  --card: #1C1620;
+  --card-foreground: #F8F1E9;
+  --muted: #1C1620;
+  --muted-foreground: #A8998E;
+  --accent: #2A2130;
+  --accent-foreground: #F8F1E9;
+  --border: #3C2F3F;
+  --ring: #FF6F5E;
+  --radius: 1rem;
+  --coral: #FF6F5E;
+  --coral-dim: #5C2018;
+  --teal: #3FBFA8;
+  --teal-dim: #123A32;
+  --surface-line: #3C2F3F;
+  --type-display: var(--font-bricolage), 'Bricolage Grotesque', system-ui, sans-serif;
+  --type-body: var(--font-inter), 'Inter', system-ui, sans-serif;
+  --ease-reveal: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-cine: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-micro: 180ms;
+  --duration-base: 320ms;
+  --duration-reveal: 1.1s;
+  --tracking-display: -0.015em;
+  --tracking-label: 0.26em;
+}
+
+/* === COMPONENTS === */
+:root {
+  --hero-title-size: clamp(2.7rem, 7.2vw, 6rem);
+  --hero-title-leading: 1.0;
+  --hero-glow: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(255, 111, 94, 0.24), rgba(92, 32, 24, 0.1) 45%, transparent 72%);
+  --hero-vignette: linear-gradient(to top, rgba(20, 15, 23, 0.96) 0%, rgba(20, 15, 23, 0.3) 42%, rgba(20, 15, 23, 0.55) 100%);
+  --button-primary-bg: #FF6F5E;
+  --button-primary-fg: #140F17;
+  --button-primary-hover-bg: #F8F1E9;
+  --button-ghost-border: rgba(248, 241, 233, 0.35);
+  --button-ghost-hover-border: #FF6F5E;
+}
