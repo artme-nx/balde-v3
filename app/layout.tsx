@@ -16,7 +16,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Balde food&bar — Biograd na Moru | Beach bar na plaži Soline",
   description:
-    "Balde food&bar — beach bar na plaži Soline u Biogradu na Moru. Domaće povrće iz vlastitog vrta, burgeri, roštilj, bogata vegan ponuda i koktELI uz more do kasno u noć.",
+    "Balde food&bar — food&bar na plaži Soline (Šetalište Dražice) u Biogradu na Moru. Riba i meso s gradela, pržena riba i cijela veganska stranica jelovnika, uz piće nad plažom do kasno u noć.",
 };
 
 export default function RootLayout({
@@ -30,6 +30,32 @@ export default function RootLayout({
       className={`${bricolage.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Restaurant",
+              name: "Balde food&bar",
+              description:
+                "Food&bar na plaži Soline (Šetalište Dražice) u Biogradu na Moru. Riba i meso s gradela, pržena riba i cijela veganska stranica jelovnika.",
+              servesCuisine: ["Mediteranska", "Riba i plodovi mora", "Roštilj", "Vegansko"],
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Šetalište Dražice",
+                addressLocality: "Biograd na Moru",
+                postalCode: "23210",
+                addressRegion: "Zadarska županija",
+                addressCountry: "HR",
+              },
+              telephone: "+385955987321",
+              email: "baldefoodandbar@gmail.com",
+              url: "https://artme-nx.github.io/balde-v3/",
+              sameAs: ["https://www.facebook.com/baldefoodandbar/"],
+              acceptsReservations: "True",
+            }),
+          }}
+        />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

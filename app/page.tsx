@@ -1,93 +1,79 @@
 import { SiteHeader } from "@/components/site-header";
 import { RevealInit } from "@/components/reveal-init";
 
+// Stvarne fotke lokala (GBP, vlasničke). Prefiks basePath jer je stranica na /balde-v3/.
+const B = "/balde-v3/img";
 const IMG = {
-  hero: "https://images.unsplash.com/photo-1664403421901-1ef422325c7a",
-  duskPalms: "https://images.unsplash.com/photo-1542995096-1cd03abc8ac3",
-  cliffBar: "https://images.unsplash.com/photo-1580740420282-f4a447af3cb0",
-  grillFlames: "https://images.unsplash.com/photo-1774074645502-93eacc3ab819",
-  fries: "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d",
-  dancing: "https://images.unsplash.com/photo-1758523981262-6b4fe624875f",
-  quinoaBowl: "https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf",
-  market: "https://images.unsplash.com/photo-1774618329767-f3acdc022a02",
-  peppers: "https://images.unsplash.com/photo-1769181463790-0c5a2a8fea69",
-  burger: "https://images.unsplash.com/photo-1560130803-aaadb4bc913e",
-  tomahawk: "https://images.unsplash.com/photo-1690618513975-324617013892",
-  veganBowl: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
-  figDessert: "https://images.unsplash.com/photo-1774980033884-144c63053258",
-  spritz: "https://images.unsplash.com/photo-1782201591364-39945c7f39d2",
-  sour: "https://images.unsplash.com/photo-1749314374163-185677265d63",
-  mint: "https://images.unsplash.com/photo-1695605302321-ddd35a9ac9f3",
-  rose: "https://images.unsplash.com/photo-1763132638690-41311d7dd7ae",
+  heroTerrace: `${B}/balde-terasa-suncobrani.webp`,
+  terraceTables: `${B}/balde-terasa-stolovi.webp`,
+  tuna: `${B}/balde-odrezak-tune.webp`,
+  platter: `${B}/balde-riblja-plata.webp`,
+  board: `${B}/balde-daska-dijeljenje.webp`,
+  meatLepinje: `${B}/balde-meso-lepinje.webp`,
+  vege: `${B}/balde-vege-daska.webp`,
 };
 
-function img(url: string, w: number, q = 80) {
-  return `${url}?auto=format&fit=crop&w=${w}&q=${q}`;
+function img(url: string, _w?: number, _q?: number) {
+  return url;
 }
 
+// Jelovnik prema fotografiranom jelovniku lokala (GBP). Cijene izostavljene (na jelovniku u kunama).
 const MENU = [
   {
-    cat: "Za dijeljenje",
-    image: IMG.peppers,
+    cat: "Pržena riba",
+    image: IMG.platter,
     dishes: [
-      { name: "Daska Balde", desc: "Domaći pršut, ovčji sir, masline i humus, uz topli kruh iz naše peći." },
-      { name: "Hrskave lignje", desc: "Pohane lignje, aioli s limunom i prženi peršin." },
-      { name: "Bruschette iz vrta", desc: "Pečeni kruh, rajčice i bosiljak, ubrano istog jutra u našem vrtu." },
-      { name: "Tuna tartar", desc: "Svježa tuna, avokado, sezam i prepečenac." },
+      { name: "Pržene lignje", desc: "Panirane i pržene." },
+      { name: "Panirana tuna", desc: "File tune u prezlama." },
+      { name: "Panirani račići", desc: "Panirani i pohani." },
+      { name: "Pržena riba", desc: "Girice ili papaline, po ponudi." },
+      { name: "Panirani oslić", desc: "File oslića u prezlama." },
     ],
   },
   {
-    cat: "Burgeri",
-    image: IMG.burger,
+    cat: "Riba s gradela",
+    image: IMG.tuna,
     dishes: [
-      { name: "Balde Classic", desc: "Domaća pljeskavica, cheddar, karamelizirani luk i naš umak." },
-      { name: "Crispy Chicken", desc: "Hrskava piletina, kupus salata, ukiseljeni krastavci, chipotle majoneza." },
-      { name: "Veggie Garden", desc: "Pljeskavica od slanutka i povrća iz vrta, grillani halloumi, pesto." },
+      { name: "Odrezak tune by chef", desc: "Svježa tuna s gradela." },
+      { name: "Odrezak sabljarke", desc: "Sabljarka s gradela." },
+      { name: "Odrezak morskog psa", desc: "S gradela." },
+      { name: "Pečene lignje", desc: "Cijele lignje s gradela." },
     ],
   },
   {
-    cat: "Sa žara",
-    image: IMG.tomahawk,
+    cat: "Meso s gradela",
+    image: IMG.meatLepinje,
     dishes: [
-      { name: "Tomahawk za dijeljenje", desc: "Zreli odrezak s kosti, sol iz Nina, ružmarin — pečeno na otvorenom plamenu." },
-      { name: "Riba dana s roštilja", desc: "Ovisno o ulovu, uz blitvu i naš maslinovo ulje." },
-      { name: "Rebarca u BBQ glazuri", desc: "Sporo pečena svinjska rebarca, coleslaw i domaći kruh." },
+      { name: "Steak by chef „Balde”", desc: "Potpisni odrezak kuće (250 g)." },
+      { name: "Pljeskavice", desc: "Domaća pljeskavica s gradela." },
+      { name: "Pileći ražnjići na ružmarinu", desc: "Piletina na grančici ružmarina." },
+      { name: "Kotlet i kobasice", desc: "S gradela, uz prilog." },
     ],
   },
   {
-    cat: "Zeleno & vegan",
-    image: IMG.veganBowl,
+    cat: "Vegan",
+    image: IMG.vege,
     dishes: [
-      { name: "Bowl iz vrta", desc: "Sezonsko povrće iz vlastitog vrta, slanutak, avokado i tahini preljev." },
-      { name: "Falafel tortilja", desc: "Domaći falafel, hummus, ukiseljeno povrće i mentin jogurt (veganski)." },
-      { name: "Quinoa salata", desc: "Quinoa, rajčica, edamame i limun-đumbir vinaigrette." },
-    ],
-  },
-  {
-    cat: "Za kraj",
-    image: IMG.figDessert,
-    dishes: [
-      { name: "Sladoled od smokve", desc: "Kućni sladoled od smokava iz susjednog vrta, s pistacijama." },
-      { name: "Smokve s medom", desc: "Pečene smokve, domaći med, mascarpone i pistacije." },
-      { name: "Čokoladni brownie", desc: "Topli brownie, sladoled od vanilije i slani karamel." },
+      { name: "Cijela veganska stranica", desc: "Zasebna veganska stranica jelovnika — predjela, glavna jela, deserti i pića. Gosti je posebno hvale u recenzijama." },
     ],
   },
 ];
 
+// Bar postoji i ima veganska pića (potvrđeno recenzijama); bez fabriciranih naziva/recepata koktela.
 const COCKTAILS = [
-  { name: "Balde Spritz", tag: "Signature", desc: "Aperol, pjenušac, prstohvat naranče i grančica ružmarina s naše terase.", image: IMG.spritz },
-  { name: "Soline Sour", tag: "Klasik", desc: "Bourbon, limun i bjelanjak, s korom naranče — hladan i okrepljujuć.", image: IMG.sour },
-  { name: "Vrtna Menta", tag: "Osvježenje", desc: "Rum, menta iz vrta, limeta i smeđi šećer, dobro istučeno s ledom.", image: IMG.mint },
-  { name: "Rose od Ružmarina", tag: "Veganski", desc: "Gin, ružičasti grejp i cvijet hibiskusa — lagan i cvjetan.", image: IMG.rose },
+  { name: "Kokteli", tag: "Bar", desc: "Miješani kokteli i klasici — pitajte za dnevnu ponudu.", image: IMG.terraceTables },
+  { name: "Veganska pića", tag: "Bez iznimke", desc: "Cijela veganska ponuda pića — potvrđena i u gostinskim recenzijama.", image: IMG.vege },
+  { name: "Vino i pjenušac", tag: "Uz jelo", desc: "Uz roštilj ili u zalazak nad plažom.", image: IMG.heroTerrace },
+  { name: "Osvježenje", tag: "Ljeto", desc: "Bezalkoholna pića i osvježenje na plaži.", image: IMG.board },
 ];
 
 const GALLERY = [
-  { src: IMG.duskPalms, alt: "Terasa Balde u sumrak, palme obasjane svjetlima", tall: true },
-  { src: IMG.cliffBar, alt: "Pogled na more i terasu bara", wide: true },
-  { src: IMG.grillFlames, alt: "Meso na plamenu roštilja" },
-  { src: IMG.fries, alt: "Hrskavi krumpirići u košarici" },
-  { src: IMG.dancing, alt: "Društvo uz more u sumrak", wide: true },
-  { src: IMG.quinoaBowl, alt: "Zdjela s quinoom i svježim povrćem" },
+  { src: IMG.heroTerrace, alt: "Terasa Balde sa slamnatim suncobranima na plaži", tall: true },
+  { src: IMG.platter, alt: "Riblja plata za dijeljenje", wide: true },
+  { src: IMG.tuna, alt: "Odrezak tune s gradela" },
+  { src: IMG.meatLepinje, alt: "Meso s gradela uz lepinje" },
+  { src: IMG.board, alt: "Daska za dijeljenje — meso, riba i povrće", wide: true },
+  { src: IMG.vege, alt: "Vegansko jelo s gradela" },
 ];
 
 export default function Home() {
@@ -101,8 +87,8 @@ export default function Home() {
         <div className="absolute inset-0">
           <img
             id="heroImg"
-            src={img(IMG.hero, 1900)}
-            alt="Terasa Balde food&bar na plaži Soline u zalasku sunca"
+            src={img(IMG.heroTerrace, 1900)}
+            alt="Terasa Balde food&bar sa slamnatim suncobranima na plaži Soline"
             className="h-full w-full object-cover scale-[1.14] will-change-transform"
           />
           <div className="absolute inset-0" style={{ background: "var(--hero-vignette)" }} />
@@ -120,7 +106,7 @@ export default function Home() {
             Stopala u pijesku, <em className="not-italic" style={{ color: "var(--coral)" }}>čaša</em> u ruci.
           </h1>
           <p className="reveal mt-6 max-w-[44ch] text-[1.05rem]" style={{ color: "var(--bone-300, #E7D8C4)" }}>
-            Beach bar na plaži Soline — burgeri, riba i povrće iz vlastitog vrta, uz koktele koji traju do kasno u noć.
+            Beach bar na plaži Soline — riba i meso s gradela, cijela veganska stranica i piće do kasno u noć.
           </p>
           <div className="reveal mt-9 flex flex-wrap items-center gap-4">
             <a
@@ -164,8 +150,8 @@ export default function Home() {
         <div className="mx-auto max-w-3xl px-6">
           <span className="text-label reveal block mb-6" style={{ color: "var(--coral)" }}>Zašto Balde</span>
           <p className="font-display reveal text-[clamp(1.6rem,3.2vw,2.5rem)] leading-snug" style={{ color: "var(--foreground)" }}>
-            Ime smo posudili od starih ribarskih kabala — rad rukama, bez pretenzija.{" "}
-            <em className="not-italic" style={{ color: "var(--coral)" }}>Povrće iz vlastitog vrta, hrana koju sami pripremamo i pijesak pod nogama.</em>
+            Food&bar na plaži, bez pretenzija.{" "}
+            <em className="not-italic" style={{ color: "var(--coral)" }}>Riba i meso s gradela, cijela veganska stranica i pijesak pod nogama.</em>
           </p>
         </div>
       </section>
@@ -176,7 +162,7 @@ export default function Home() {
           <div className="reveal mb-16 text-center">
             <span className="text-label block mb-4" style={{ color: "var(--coral)" }}>Jelovnik</span>
             <h2 className="font-display text-[clamp(2.1rem,4.2vw,3.2rem)] font-semibold" style={{ color: "var(--foreground)" }}>
-              Domaće, <em className="not-italic" style={{ color: "var(--coral)" }}>sa žara</em> i iz vrta
+              Riba i meso <em className="not-italic" style={{ color: "var(--coral)" }}>s gradela</em>
             </h2>
           </div>
 
@@ -218,7 +204,7 @@ export default function Home() {
               Koktel u <em className="not-italic" style={{ color: "var(--teal)" }}>zalazak</em>
             </h2>
             <p className="mt-5 max-w-[52ch] mx-auto" style={{ color: "var(--muted-foreground)" }}>
-              Naš bar radi do kasno. Klasici, potpisani koktELI i cijela veganska ponuda pića — uvijek dobro rashlađeno.
+              Bar radi do kasno. Kokteli, vino i cijela veganska ponuda pića — uvijek dobro rashlađeno.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -242,21 +228,21 @@ export default function Home() {
       <section id="prica" className="py-24">
         <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 px-6 md:grid-cols-2">
           <div className="reveal h-[420px] md:h-[540px] overflow-hidden rounded-2xl">
-            <img src={img(IMG.market, 1000)} alt="Svježe povrće iz vlastitog vrta Balde" className="h-full w-full object-cover" loading="lazy" />
+            <img src={img(IMG.terraceTables, 1000)} alt="Terasa Balde food&bar na plaži Soline" className="h-full w-full object-cover" loading="lazy" />
           </div>
           <div>
             <span className="text-label reveal block mb-5" style={{ color: "var(--coral)" }}>Naša priča</span>
             <h2 className="font-display reveal text-[clamp(1.9rem,3.6vw,2.8rem)] font-semibold mb-6" style={{ color: "var(--foreground)" }}>
-              Vrt, more i <em className="not-italic" style={{ color: "var(--coral)" }}>obiteljska ruka</em>
+              Na plaži, <em className="not-italic" style={{ color: "var(--coral)" }}>uz more</em>
             </h2>
             <p className="reveal mb-4 max-w-[46ch]" style={{ color: "var(--muted-foreground)" }}>
-              Balde je obiteljski beach bar na plaži Soline, korak od mora. Ime nosi duh starih dalmatinskih ribarskih kabala — jednostavnost, rad rukama, ništa naglašeno.
+              Balde je food&bar na plaži Soline u Biogradu na Moru, korak od mora — pogled ide na otok Vrgadu i ulaz u Kornate.
             </p>
             <p className="reveal mb-4 max-w-[46ch]" style={{ color: "var(--muted-foreground)" }}>
-              Povrće uzgajamo u vlastitom vrtu, meso biramo provjerenog podrijetla, a na jelovniku je i cijela veganska stranica — jer dobra hrana nema iznimke. Danju plaža i osvježenje, navečer roštilj, koktel i druženje koje traje.
+              Na jelovniku su riba i meso s gradela i pržena riba, a uz to i cijela veganska stranica koju gosti posebno hvale u recenzijama. Danju plaža i osvježenje, navečer roštilj, piće i druženje koje traje do kasno.
             </p>
             <p className="reveal font-display italic text-lg" style={{ color: "var(--coral)" }}>
-              — obitelj Balde, plaža Soline
+              — Balde food&bar, plaža Soline
             </p>
           </div>
         </div>
@@ -297,7 +283,7 @@ export default function Home() {
 
             <div className="reveal mb-6">
               <div className="text-label mb-2" style={{ color: "var(--coral)" }}>Adresa</div>
-              <p style={{ color: "var(--muted-foreground)" }}>Plaža Soline, Biograd na Moru</p>
+              <p style={{ color: "var(--muted-foreground)" }}>Šetalište Dražice (plaža Soline), Biograd na Moru</p>
             </div>
 
             <div className="reveal mb-6">
@@ -316,7 +302,7 @@ export default function Home() {
             <div className="reveal mb-8">
               <div className="text-label mb-2" style={{ color: "var(--coral)" }}>Radno vrijeme</div>
               <div className="flex justify-between max-w-[280px] border-b border-dotted py-1.5" style={{ borderColor: "var(--surface-line)", color: "var(--foreground)" }}>
-                <span>Svaki dan</span><span>08:00 – 24:00</span>
+                <span>Svaki dan</span><span>otvoreno do 00:00</span>
               </div>
               <div className="flex justify-between max-w-[280px] border-b border-dotted py-1.5" style={{ borderColor: "var(--surface-line)", color: "var(--foreground)" }}>
                 <span>Bar</span><span>do kasno u noć</span>
@@ -333,7 +319,7 @@ export default function Home() {
           </div>
           <div className="reveal min-h-[360px]">
             <iframe
-              src="https://maps.google.com/maps?q=Balde+food+bar+Pla%C5%BEa+Soline+Biograd+na+Moru&output=embed"
+              src="https://maps.google.com/maps?q=Food%26bar+Balde+%C5%A0etali%C5%A1te+Dra%C5%BEice+Biograd+na+Moru&output=embed"
               loading="lazy"
               title="Balde food&bar — plaža Soline, Biograd na Moru"
               className="h-full w-full min-h-[360px] border-0 grayscale-[20%]"
@@ -351,7 +337,7 @@ export default function Home() {
                 Balde <span style={{ color: "var(--coral)" }}>food&amp;bar</span>
               </div>
               <p className="max-w-[34ch] text-sm" style={{ color: "var(--muted-foreground)" }}>
-                Beach bar na plaži Soline, Biograd na Moru. Domaći burgeri, roštilj, povrće iz vlastitog vrta i koktELI do kasno u noć.
+                Food&bar na plaži Soline, Biograd na Moru. Riba i meso s gradela, cijela veganska stranica i piće do kasno u noć.
               </p>
             </div>
             <div>
@@ -369,7 +355,7 @@ export default function Home() {
               <div className="flex flex-col gap-2.5 text-sm" style={{ color: "var(--muted-foreground)" }}>
                 <a href="tel:+385955987321" className="font-display text-lg" style={{ color: "var(--foreground)" }}>+385 95 598 7321</a>
                 <a href="mailto:baldefoodandbar@gmail.com" className="hover:text-[var(--coral)]">baldefoodandbar@gmail.com</a>
-                <p>Plaža Soline, Biograd na Moru</p>
+                <p>Šetalište Dražice (plaža Soline), Biograd na Moru</p>
               </div>
             </div>
           </div>
